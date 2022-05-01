@@ -1,4 +1,4 @@
-desktop_mode = not lovr.headset -- for desktop debugging (not playing lmao)
+desktop_mode = true -- for desktop debugging (not playing lmao)
 math.randomseed(os.clock())
 -- todo:
 -- full vr functionality
@@ -256,7 +256,7 @@ game = {
                 end
                 if(is_plane_full) then
                     game.planes = game.planes + 1
-                    plane_count = 0
+                    plane_count = plane_count + 1
                     for z2=z,1,-1 do
                         for y=1,h do
                             for x=1,w do
@@ -577,6 +577,7 @@ function lovr.draw()
     lovr.graphics.print("Planes: "..game.planes.."\nScore: "..game.score,-0.1,1.25,-1.25,0.15,-math.pi/4,1,0,0,0,"right")
 
     -- particle cubes
+    lovr.graphics.setColor(0.6,0.6,1,1)
     for i,cube in ipairs(game.particle_cubes) do
         lovr.graphics.cube("fill",cube.x,cube.y,cube.z,1/9,cube.r,cube.rx,cube.ry,cube.rz)
     end
